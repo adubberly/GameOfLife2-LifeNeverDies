@@ -1,0 +1,14 @@
+.gameArea{
+  float: left;
+  background-color: black;
+}
+
+.controlsArea {
+  float:left;
+  background-color:lightblue;
+}
+
+
+.gameBoard{
+  background-color:seagreen;
+}

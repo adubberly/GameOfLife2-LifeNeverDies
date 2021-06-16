@@ -1,0 +1,15 @@
+<div class="gameArea">
+  <canvas #myCanvas class="gameBoard" width="800" height="800" style="border:1px solid lightgrey;"
+          (click)="mouseDown($event)">
+    Error
+  </canvas>
+</div>
+<div class="controlsArea">
+  <app-game-controls
+      (toggleGameStateEvent)="toggleGameState()"
+      (resetGameEvent)="resetGame()"
+      (changeGenSpeedEvent)="updateGameSpeed($event)"
+      (changeLifeColorEvent)="changeLifeColor($event)"
+      (changeDeathColorEvent)="changeDeathColor($event)">
+  </app-game-controls>
+</div>
