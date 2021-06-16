@@ -33,7 +33,7 @@ export class Cell
     this.context = context;
 
     //Set default 0 for rounds alive and dead
-    this.roundsSinceDeath = 5;
+    this.roundsSinceDeath = 6;
     this.roundsAlive      = 0;
 
     //Set spawnRate and determine isAlive
@@ -85,7 +85,9 @@ export class Cell
 
   /*************************************************************
   *                 setCellClickedCellState
-  * Purpose:
+  * Purpose: Instantly changes and draws a cell to the opposite
+  * of it's current state. This happens when the user clicks on
+  * the cell area, toggling it's life/death state
   *
   **************************************************************/
   setCellClickedCellState(lifeColor: string, deathColor: string) {
@@ -101,6 +103,23 @@ export class Cell
 
     //Draw cell
     this.draw(lifeColor, deathColor);
+  }
+
+
+  /*************************************************************
+  *                     clearCellState
+  * Purpose: Completely clears the cell, resetting all values
+  * and setting the isAlive state to false
+  *
+  **************************************************************/
+  clearCellState(){
+    //Set default 0 for rounds alive and dead
+    this.roundsSinceDeath = 5;
+    this.roundsAlive      = 0;
+
+    this.isAlive = false;
+
+
   }
 
 
@@ -169,9 +188,9 @@ export class Cell
       //fillRect(x, y, width, height);
       this.context.fillRect(this.xPos * Cell.width, this.yPos * Cell.height, Cell.width, Cell.height);
 
+      //If recenty dead, draw death animation
       if(this.roundsSinceDeath <= 5 && this.roundsSinceDeath > 0) {
         this.context.fillStyle = lifeColor;
-        //this.context.globalAlpha = this.roundsSinceDeath * 0.02;
 
         let newRadius = radius / this.roundsSinceDeath;
 
@@ -183,8 +202,6 @@ export class Cell
         this.context.beginPath();
         this.context.arc(circleX, circleY, newRadius, 0, 2 * Math.PI, false);
         this.context.fill();
-
-        this.context.globalAlpha = 1;
       }
     }
 

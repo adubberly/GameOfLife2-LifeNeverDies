@@ -1,6 +1,6 @@
 <div class="gameArea">
   <canvas #myCanvas class="gameBoard" width="800" height="800" style="border:1px solid lightgrey;"
-          (click)="mouseDown($event)">
+          (mousedown)="mouseDown($event)" (mouseup)="mouseUp($event)" (mousemove)="mouseMove($event)">
     Error
   </canvas>
 </div>
@@ -8,6 +8,7 @@
   <app-game-controls
       (toggleGameStateEvent)="toggleGameState()"
       (resetGameEvent)="resetGame()"
+      (clearBoardEvent)="clearBoard()"
       (changeGenSpeedEvent)="updateGameSpeed($event)"
       (changeLifeColorEvent)="changeLifeColor($event)"
       (changeDeathColorEvent)="changeDeathColor($event)">

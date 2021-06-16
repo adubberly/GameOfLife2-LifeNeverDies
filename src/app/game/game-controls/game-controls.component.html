@@ -3,26 +3,30 @@
     <mat-icon *ngIf="gameState" (click)="this.toggleGameState()">pause_presentation</mat-icon>
     <mat-icon *ngIf="!gameState" (click)="this.toggleGameState()">play_circle_outline</mat-icon>
   </button>
-<br>
+  <br>
   <button mat-icon-button >
     <mat-icon (click)="this.resetGame()">refresh</mat-icon>
   </button>
-<br>
-Speed: {{sliderVal}}
-<mat-slider
-        thumblabel
-        [displayWith]="formatThumbLabel"
-        max="{{maxSliderVal}}"
-        min="{{minSliderVal}}"
-        step="1"
-        (input)="setSpeed($event)"
-        >
-    </mat-slider>
-<br>
-Life Color:
-<input type="color" id="lifeColorInput" [(ngModel)]="lifeColor" (ngModelChange)="lifeColorChange()">
-<br>
-Death Color:
-<input type="color" id="deathColorInput" [(ngModel)]="deathColor" (ngModelChange)="deathColorChange()">
+  <br>
+  <button mat-icon-button>
+    <mat-icon (click)="this.clearBoard()">delete</mat-icon>
+  </button>
+  <br>
+  Speed: {{sliderVal}}
+  <mat-slider
+          thumblabel
+          [displayWith]="formatThumbLabel"
+          max="{{maxSliderVal}}"
+          min="{{minSliderVal}}"
+          step="1"
+          (input)="setSpeed($event)"
+          >
+      </mat-slider>
+  <br>
+  Life Color:
+  <input type="color" id="lifeColorInput" [(ngModel)]="lifeColor" (ngModelChange)="lifeColorChange()">
+  <br>
+  Death Color:
+  <input type="color" id="deathColorInput" [(ngModel)]="deathColor" (ngModelChange)="deathColorChange()">
 </div>
 

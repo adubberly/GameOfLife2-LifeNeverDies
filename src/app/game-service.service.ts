@@ -19,9 +19,12 @@ export class GameService {
    }
 
 
-   createBoard(iContext) {
+   createBoard(iContext, newSpawnRate) {
     //Get Context - Temp Solution
     this.context = iContext;
+
+    //Set new Spawn rate
+    this.spawnRate = newSpawnRate;
 
     //Destroy previous board
     this.cells = [];

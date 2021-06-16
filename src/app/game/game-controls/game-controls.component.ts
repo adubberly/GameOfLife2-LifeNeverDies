@@ -6,9 +6,10 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef} 
   styleUrls: ['./game-controls.component.css']
 })
 export class GameControlsComponent implements OnInit {
-  @Output() toggleGameStateEvent = new EventEmitter<void>();
-  @Output() resetGameEvent = new EventEmitter<void>();
-  @Output() changeGenSpeedEvent = new EventEmitter<number>();
+  @Output() toggleGameStateEvent  = new EventEmitter<void>();
+  @Output() resetGameEvent        = new EventEmitter<void>();
+  @Output() clearBoardEvent       = new EventEmitter<void>();
+  @Output() changeGenSpeedEvent   = new EventEmitter<number>();
   @Output() changeDeathColorEvent = new EventEmitter<string>();
   @Output() changeLifeColorEvent  = new EventEmitter<string>();
 
@@ -40,23 +41,25 @@ export class GameControlsComponent implements OnInit {
     this.toggleGameStateEvent.emit();
   }
 
-  resetGame(){
+  resetGame() {
     this.gameState = true;
     this.resetGameEvent.emit();
   }
 
-  setSpeed(event)
-  {
+  clearBoard() {
+    this.gameState = false;
+    this.clearBoardEvent.emit();
+  }
+
+  setSpeed(event) {
     this.sliderVal = event.value;
     this.changeGenSpeedEvent.emit(this.sliderVal);
   }
 
-  formatThumbLabel(value: number){
+  formatThumbLabel(value: number) {
     if(value >= 100){
       return Math.round(value / 100) + 'Generations';
     }
     return value;
   }
-
-
 }
